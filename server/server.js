@@ -15,6 +15,9 @@ const deliveryRoutes = require("./src/routes/deliveryRoutes");
 const transferRoutes = require("./src/routes/transferRoutes");
 const adjustmentRoutes =
     require("./src/routes/adjustmentRoutes");
+const dashboardRoutes =
+    require("./src/routes/dashboardRoutes");
+
 
 
 app.use(cors());
@@ -31,7 +34,7 @@ app.use("/api/receipts", receiptRoutes);
 app.use("/api/deliveries", deliveryRoutes);
 app.use("/api/transfers", transferRoutes);
 app.use("/api/adjustments", adjustmentRoutes);
-
+app.use("/api/dashboard", dashboardRoutes);
 
 
 app.get("/", (req, res) => {
