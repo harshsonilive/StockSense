@@ -11,6 +11,20 @@ const router = express.Router();
 /**
  * @swagger
  * /api/transfers:
+ *   get:
+ *     summary: Get all stock transfers
+ *     tags:
+ *       - Transfers
+ *     responses:
+ *       200:
+ *         description: List of stock transfers
+ */
+router.get("/", getTransfers);
+
+
+/**
+ * @swagger
+ * /api/transfers:
  *   post:
  *     summary: Create a stock transfer
  *     tags:
@@ -68,7 +82,23 @@ router.post("/", createTransfer);
  *     summary: Validate a stock transfer
  *     tags:
  *       - Transfers
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: Transfer ID
+ *         example: 1
+ *     responses:
+ *       200:
+ *         description: Transfer validated successfully
+ *       400:
+ *         description: Transfer cannot be validated
+ *       404:
+ *         description: Transfer not found
  */
 router.post("/:id/validate", validateTransfer);
+
 
 module.exports = router;

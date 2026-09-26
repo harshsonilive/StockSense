@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
     PackagePlus,
@@ -20,6 +21,8 @@ import {
 
 
 function Dashboard() {
+
+    const navigate = useNavigate();
 
     const [summary, setSummary] = useState(null);
     const [movements, setMovements] = useState([]);
@@ -66,13 +69,12 @@ function Dashboard() {
             setRefreshing(false);
 
         }
+
     };
 
 
     useEffect(() => {
-
         loadDashboard();
-
     }, []);
 
 
@@ -83,6 +85,7 @@ function Dashboard() {
                 Loading dashboard...
             </div>
         );
+
     }
 
 
@@ -104,6 +107,7 @@ function Dashboard() {
 
             </div>
         );
+
     }
 
 
@@ -118,6 +122,7 @@ function Dashboard() {
         };
 
         return labels[type] || type;
+
     };
 
 
@@ -132,10 +137,12 @@ function Dashboard() {
         }
 
         return "";
+
     };
 
 
     return (
+
         <div className="dashboard">
 
             {/* =========================================
@@ -197,7 +204,10 @@ function Dashboard() {
 
             <div className="quick-actions">
 
-                <button className="quick-action primary">
+                <button
+                    className="quick-action primary"
+                    onClick={() => navigate("/products")}
+                >
 
                     <span className="quick-action-icon">
                         <Plus size={17} />
@@ -210,7 +220,10 @@ function Dashboard() {
                 </button>
 
 
-                <button className="quick-action">
+                <button
+                    className="quick-action"
+                    onClick={() => navigate("/receipts")}
+                >
 
                     <span className="quick-action-icon">
                         <PackagePlus size={17} />
@@ -223,7 +236,10 @@ function Dashboard() {
                 </button>
 
 
-                <button className="quick-action">
+                <button
+                    className="quick-action"
+                    onClick={() => navigate("/deliveries")}
+                >
 
                     <span className="quick-action-icon">
                         <Truck size={17} />
@@ -236,7 +252,10 @@ function Dashboard() {
                 </button>
 
 
-                <button className="quick-action">
+                <button
+                    className="quick-action"
+                    onClick={() => navigate("/transfers")}
+                >
 
                     <span className="quick-action-icon">
                         <ArrowLeftRight size={17} />
@@ -256,6 +275,9 @@ function Dashboard() {
             ========================================= */}
 
             <div className="stats-grid">
+
+
+                {/* TOTAL PRODUCTS */}
 
                 <div className="stat-card">
 
@@ -278,6 +300,8 @@ function Dashboard() {
                 </div>
 
 
+                {/* WAREHOUSES */}
+
                 <div className="stat-card">
 
                     <div className="stat-card-top">
@@ -299,6 +323,8 @@ function Dashboard() {
                 </div>
 
 
+                {/* TOTAL STOCK */}
+
                 <div className="stat-card">
 
                     <div className="stat-card-top">
@@ -310,7 +336,7 @@ function Dashboard() {
                     </div>
 
                     <span>
-                        Total Stock Units
+                        Total Stock Quantity
                     </span>
 
                     <strong>
@@ -319,6 +345,8 @@ function Dashboard() {
 
                 </div>
 
+
+                {/* LOW STOCK */}
 
                 <div className="stat-card warning-card">
 
@@ -350,7 +378,9 @@ function Dashboard() {
             <div className="dashboard-grid">
 
 
-                {/* RECENT MOVEMENTS */}
+                {/* =====================================
+                    RECENT MOVEMENTS
+                ===================================== */}
 
                 <section className="dashboard-section">
 
@@ -394,6 +424,7 @@ function Dashboard() {
                                             <Boxes size={16} />
                                         </div>
 
+
                                         <div>
 
                                             <strong>
@@ -414,10 +445,13 @@ function Dashboard() {
                                     <div className="movement-info">
 
                                         <span className="movement-type">
+
                                             {movementTypeLabel(
                                                 movement.movement_type
                                             )}
+
                                         </span>
+
 
                                         <strong
                                             className={
@@ -428,12 +462,14 @@ function Dashboard() {
                                                 )
                                             }
                                         >
+
                                             {Number(
                                                 movement.quantity_change
                                             ) > 0
                                                 ? `+${movement.quantity_change}`
                                                 : movement.quantity_change
                                             }
+
                                         </strong>
 
                                     </div>
@@ -449,7 +485,9 @@ function Dashboard() {
                 </section>
 
 
-                {/* OPERATIONS */}
+                {/* =====================================
+                    OPERATIONS
+                ===================================== */}
 
                 <section className="dashboard-section">
 
@@ -472,6 +510,9 @@ function Dashboard() {
 
                     <div className="operation-list">
 
+
+                        {/* PENDING RECEIPTS */}
+
                         <div className="operation-item">
 
                             <div className="operation-label">
@@ -492,6 +533,8 @@ function Dashboard() {
 
                         </div>
 
+
+                        {/* PENDING DELIVERIES */}
 
                         <div className="operation-item">
 
@@ -514,6 +557,8 @@ function Dashboard() {
                         </div>
 
 
+                        {/* PENDING TRANSFERS */}
+
                         <div className="operation-item">
 
                             <div className="operation-label">
@@ -534,6 +579,8 @@ function Dashboard() {
 
                         </div>
 
+
+                        {/* OUT OF STOCK */}
 
                         <div className="operation-item">
 
@@ -561,14 +608,18 @@ function Dashboard() {
 
                         </div>
 
+
                     </div>
 
                 </section>
 
+
             </div>
 
         </div>
+
     );
+
 }
 
 
