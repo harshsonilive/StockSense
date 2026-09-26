@@ -1795,3 +1795,569 @@
     }
 
 }
+
+/* =========================================
+   INVENTORY
+========================================= */
+
+.inventory-summary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+}
+
+
+.inventory-summary-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 14px;
+
+    background: #ffffff;
+
+    border: 1px solid #e6eaf0;
+
+    border-radius: 9px;
+}
+
+
+.inventory-summary-icon {
+    width: 33px;
+    height: 33px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 7px;
+
+    background: #f3f5f8;
+
+    color: #667085;
+}
+
+
+.inventory-summary-icon.warning-icon {
+    background: #fff7e8;
+
+    color: #ad7620;
+}
+
+
+.inventory-summary-icon.danger-icon {
+    background: #fdf0f0;
+
+    color: #b25454;
+}
+
+
+.inventory-summary-card > div:last-child {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.inventory-summary-card span {
+    color: #8d96a5;
+
+    font-size: 10px;
+}
+
+
+.inventory-summary-card strong {
+    color: #30394a;
+
+    font-size: 17px;
+
+    font-weight: 650;
+}
+
+
+/* =========================================
+   INVENTORY CONTROLS
+========================================= */
+
+.inventory-controls {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+.filter-select {
+    height: 34px;
+
+    padding: 0 27px 0 10px;
+
+    border: 1px solid #dfe4eb;
+
+    border-radius: 7px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #596577;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    cursor: pointer;
+}
+
+
+.filter-select:focus {
+    border-color: #8995a7;
+}
+
+
+/* =========================================
+   INVENTORY TABLE
+========================================= */
+
+.inventory-table {
+    min-width: 900px;
+}
+
+
+.warehouse-cell {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    color: #596577;
+
+    white-space: nowrap;
+}
+
+
+.warehouse-cell svg {
+    color: #8d96a5;
+}
+
+
+.quantity-value {
+    color: #30394a;
+
+    font-size: 12px;
+}
+
+
+.quantity-unit {
+    margin-left: 4px;
+
+    color: #929aaa;
+
+    font-size: 10px;
+}
+
+
+.status-badge.warning {
+    background: #fff6e5;
+
+    color: #9a6a19;
+}
+
+
+.status-badge.danger {
+    background: #fdf0f0;
+
+    color: #a74e4e;
+}
+
+
+/* =========================================
+   REFRESH BUTTON
+========================================= */
+
+.refresh-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    height: 34px;
+
+    padding: 0 12px;
+
+    border: 1px solid #dfe4eb;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #596577;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+
+.refresh-button:hover {
+    background: #f7f8fa;
+
+    border-color: #d2d8e1;
+}
+
+
+.refresh-button:disabled {
+    opacity: 0.65;
+
+    cursor: default;
+}
+
+
+.spin {
+    animation: spin 0.8s linear infinite;
+}
+
+
+@keyframes spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================================
+   RESPONSIVE INVENTORY
+========================================= */
+
+@media (max-width: 1050px) {
+
+    .inventory-summary {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .content-toolbar {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .inventory-controls {
+        width: 100%;
+    }
+
+    .inventory-controls .table-search {
+        flex: 1;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .inventory-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .inventory-controls {
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+    .inventory-controls .table-search {
+        width: 100%;
+    }
+
+    .filter-select {
+        width: 100%;
+    }
+
+}
+
+.form-field select {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 10px 11px;
+
+    border: 1px solid #dfe4eb;
+
+    border-radius: 7px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #30394a;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.form-field select:focus {
+    border-color: #8995a7;
+
+    box-shadow:
+        0 0 0 3px rgba(100, 116, 139, 0.08);
+}
+
+/* Warehouse summary cards */
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.summary-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    background: #ffffff;
+    border: 1px solid #e5e9f0;
+    border-radius: 12px;
+}
+
+.summary-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #f1f4f8;
+    color: #526581;
+}
+
+.summary-card > div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.summary-card span {
+    font-size: 12px;
+    color: #718096;
+}
+
+.summary-card strong {
+    font-size: 22px;
+    line-height: 1;
+    color: #172033;
+}
+
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+.primary-button,
+.secondary-button,
+.refresh-button,
+.small-action-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    border-radius: 8px;
+    padding: 9px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.primary-button {
+    background: #172033;
+    color: white;
+}
+
+.primary-button:hover {
+    background: #27344d;
+}
+
+.secondary-button,
+.refresh-button {
+    background: white;
+    color: #40506b;
+    border-color: #dce2ea;
+}
+
+.small-action-button {
+    padding: 6px 10px;
+    background: #eef4ff;
+    color: #315b9d;
+}
+
+.error-banner {
+    margin-bottom: 16px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: #fff2f2;
+    border: 1px solid #ffd5d5;
+    color: #b42318;
+    font-size: 13px;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.42);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.modal {
+    width: 100%;
+    max-width: 520px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 22px;
+    border-bottom: 1px solid #e8edf3;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 19px;
+    color: #172033;
+}
+
+.modal-header p {
+    margin: 5px 0 0;
+    font-size: 12px;
+    color: #7a8799;
+}
+
+.modal-close {
+    border: 0;
+    background: #f3f5f8;
+    width: 32px;
+    height: 32px;
+    border-radius: 7px;
+    cursor: pointer;
+    color: #64748b;
+}
+
+.form {
+    padding: 22px;
+}
+
+.form label {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #44526a;
+}
+
+.form input,
+.form select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 11px;
+    border: 1px solid #d9e0e8;
+    border-radius: 8px;
+    background: white;
+    color: #172033;
+    font-size: 13px;
+    outline: none;
+}
+
+.form input:focus,
+.form select:focus {
+    border-color: #8294ae;
+    box-shadow: 0 0 0 3px rgba(82, 101, 129, 0.08);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.empty-state {
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #718096;
+}
+
+.empty-state strong {
+    color: #334155;
+}
+
+@media (max-width: 700px) {
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .page-header-actions {
+        width: 100%;
+    }
+
+    .modal {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
